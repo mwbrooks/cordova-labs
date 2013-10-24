@@ -2,39 +2,28 @@
  * Module dependencies.
  */
 
-var shell = require('shelljs'),
-    path = require('path'),
-    bin,
-    options;
+var cli = require('../../lib/cli'),
+    hastings = require('../../lib/hastings'),
+    argv;
 
 /*!
- * Specification: Shell execution.
+ * Specification: CLI Module.
  */
 
-describe('$ hastings [options] commands', function() {
+describe('cli.exec(argv)', function() {
     beforeEach(function() {
-        bin = 'node ' + path.resolve(path.join(__dirname, '..', '..', 'bin'));
-        options = { silent: true };
-        spyOn(process.stdout, 'write');
+        argv = ['node', '/usr/local/bin/hastings'];
+        spyOn(hastings, 'render');
     });
 
-    it('should exit okay', function() {
-        var process = shell.exec(bin, options);
-        expect(process.code).toEqual(0);
+    it('should use undefined when no path is given', function() {
+        cli.exec(argv);
+        expect(hastings.render).toHaveBeenCalledWith(undefined);
     });
 
-    //it('should support no arguments', function() {
-    //    var process = shell.exec(bin, { silent: true });
-    //    expect(process.output).toMatch('Usage:');
-    //});
-
-    //it('should support commands', function() {
-    //    var process = shell.exec(bin + ' version', { silent: true });
-    //    expect(process.output).toMatch(/^\w+\.\w+\.\w+/);
-    //});
-
-    //it('should support options', function() {
-    //    var process = shell.exec(bin + ' --version', { silent: true });
-    //    expect(process.output).toMatch(/^\w+\.\w+\.\w+/);
-    //});
+    it('should use the path when a path is given', function() {
+        argv.push('lib/hastings');
+        cli.exec(argv);
+        expect(hastings.render).toHaveBeenCalledWith('lib/hastings');
+    });
 });
