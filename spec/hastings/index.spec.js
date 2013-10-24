@@ -3,6 +3,7 @@
  */
 
 var hastings = require('../../lib/hastings'),
+    dir = require('node-dir'),
     options;
 
 /*!
@@ -11,11 +12,17 @@ var hastings = require('../../lib/hastings'),
 
 describe('hastings.render(path)', function() {
     beforeEach(function() {
-        options = 'docs';
+        options = { path: 'docs' };
+        spyOn(dir, 'paths');
     });
 
     describe('given no path', function() {
         it('should use current working directory', function() {
+            hastings.render();
+            expect(dir.paths).toHaveBeenCalledWith(
+                process.cwd(),
+                jasmine.any(Function)
+            );
         });
     });
 });

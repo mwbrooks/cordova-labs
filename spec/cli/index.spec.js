@@ -18,12 +18,14 @@ describe('cli.exec(argv)', function() {
 
     it('should use undefined when no path is given', function() {
         cli.exec(argv);
-        expect(hastings.render).toHaveBeenCalledWith(undefined);
+        expect(hastings.render).toHaveBeenCalledWith({});
     });
 
     it('should use the path when a path is given', function() {
         argv.push('lib/hastings');
         cli.exec(argv);
-        expect(hastings.render).toHaveBeenCalledWith('lib/hastings');
+        expect(hastings.render).toHaveBeenCalledWith({
+            path: 'lib/hastings'
+        });
     });
 });
