@@ -3,6 +3,7 @@
  */
 
 var hastings = require('../../lib/hastings'),
+    path = require('path'),
     dir = require('node-dir'),
     options;
 
@@ -18,9 +19,20 @@ describe('hastings.render(path)', function() {
 
     describe('given no path', function() {
         it('should use current working directory', function() {
-            hastings.render();
+            options.path = undefined;
+            hastings.render(options);
             expect(dir.paths).toHaveBeenCalledWith(
                 process.cwd(),
+                jasmine.any(Function)
+            );
+        });
+    });
+
+    describe('given a path', function() {
+        it('should use the resolved path', function() {
+            hastings.render(options);
+            expect(dir.paths).toHaveBeenCalledWith(
+                path.resolve(options.path),
                 jasmine.any(Function)
             );
         });
