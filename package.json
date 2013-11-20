@@ -17,7 +17,8 @@
     "nodoc": "./bin/index.js"
   },
   "scripts": {
-    "test": "jasmine-node --color spec"
+    "test": "jasmine-node --color spec",
+    "doc": "./bin/index.js"
   },
   "engines": {
     "node": ">=0.10.0"
