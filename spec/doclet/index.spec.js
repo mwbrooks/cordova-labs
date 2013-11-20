@@ -3,15 +3,15 @@
  */
 
 var dir = require('node-dir'),
-    doclet = require('../../lib/doclet'),
+    nodoc = require('../../lib/nodoc'),
     fs = require('fs'),
     options;
 
 /*!
- * Doclet specification.
+ * nodoc specification.
  */
 
-describe('doclet.compile(path)', function() {
+describe('nodoc.compile(path)', function() {
   beforeEach(function() {
     options = '/some/path';
     spyOn(dir, 'paths');
@@ -19,11 +19,11 @@ describe('doclet.compile(path)', function() {
 
   describe('path parameter', function() {
     it('should not be required', function() {
-      expect(doclet.compile).not.toThrow();
+      expect(nodoc.compile).not.toThrow();
     });
 
     it('should default cwd', function() {
-      doclet.compile();
+      nodoc.compile();
       expect(dir.paths).toHaveBeenCalledWith(
         process.cwd(),
         jasmine.any(Function)
@@ -31,7 +31,7 @@ describe('doclet.compile(path)', function() {
     });
 
     it('should be supported', function() {
-      doclet.compile(options);
+      nodoc.compile(options);
       expect(dir.paths).toHaveBeenCalledWith(
         options,
         jasmine.any(Function)
@@ -49,12 +49,12 @@ describe('doclet.compile(path)', function() {
         ]});
       });
       spyOn(fs, 'readFileSync').andReturn('# Markdown');
-      spyOn(doclet, 'markdown');
+      spyOn(nodoc, 'markdown');
     });
 
     it('should be called for each file', function() {
-      doclet.compile(options);
-      expect(doclet.markdown.calls.length).toEqual(3);
+      nodoc.compile(options);
+      expect(nodoc.markdown.calls.length).toEqual(3);
     });
   });
 });

@@ -3,7 +3,7 @@
  */
 
 var cli = require('../../lib/cli'),
-    doclet = require('../../lib/doclet'),
+    nodoc = require('../../lib/nodoc'),
     argv;
 
 /*!
@@ -12,18 +12,18 @@ var cli = require('../../lib/cli'),
 
 describe('cli.exec(argv)', function() {
   beforeEach(function() {
-    argv = ['node', '/usr/local/bin/doclet'];
-    spyOn(doclet, 'compile');
+    argv = ['node', '/usr/local/bin/nodoc'];
+    spyOn(nodoc, 'compile');
   });
 
-  it('should call doclet.compile', function() {
+  it('should call nodoc.compile', function() {
     cli.exec(argv);
-    expect(doclet.compile).toHaveBeenCalledWith(undefined);
+    expect(nodoc.compile).toHaveBeenCalledWith(undefined);
   });
 
   it('should support a path argument', function() {
     argv.push('/some/path');
     cli.exec(argv);
-    expect(doclet.compile).toHaveBeenCalledWith('/some/path');
+    expect(nodoc.compile).toHaveBeenCalledWith('/some/path');
   });
 });

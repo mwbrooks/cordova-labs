@@ -1,10 +1,10 @@
-# Doclet [![Build Status][travis-ci-img]][travis-ci-url]
+# nodoc [![Build Status][travis-ci-img]][travis-ci-url]
 
-> Modular Documentation
+> Node documentation engine.
 
 ## Overview
 
-Doclet is a modular documentation system. It can parse any type of documentation
+nodoc is a modular documentation system. It can parse any type of documentation
 and render to any format.
 
 ## Goal
@@ -32,18 +32,6 @@ and render to any format.
 2. Render multiple repositories to themed HTML
 3. Render multiple languages
 
-## CLI
-
-    $ doclet path/to/project
-
-## Library
-
-    var doclet = require('doclet');
-
-    doclet.compile('path/to/project', function(e) {
-        // all done
-    });
-
-[travis-ci-img]: https://travis-ci.org/mwbrooks/cordova-labs.png?branch=doclet
+[travis-ci-img]: https://travis-ci.org/mwbrooks/cordova-labs.png?branch=nodoc
 [travis-ci-url]: https://travis-ci.org/mwbrooks/cordova-labs
 

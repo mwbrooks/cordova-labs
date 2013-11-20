@@ -11,7 +11,7 @@ var shell = require('shelljs'),
  * Shell script specification.
  */
 
-describe('$ doclet [options] <path>', function() {
+describe('$ nodoc [options] <path>', function() {
   beforeEach(function() {
     bin = 'node ' + path.resolve(path.join(__dirname, '..', '..', 'bin', 'index.js'));
     options = { silent: true };

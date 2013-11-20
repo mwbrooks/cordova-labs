@@ -1,8 +1,8 @@
 {
-  "name": "doclet",
-  "description": "Your modular documentation system.",
+  "name": "nodoc",
+  "description": "Node documentation engine.",
   "version": "0.0.1",
-  "homepage": "https://github.com/apache/cordova-labs/tree/doclet",
+  "homepage": "https://github.com/apache/cordova-labs/tree/nodoc",
   "repository": {
     "type": "git",
     "url": "https://git-wip-us.apache.org/repos/asf/cordova-labs.git"
@@ -12,9 +12,9 @@
     "documentation"
   ],
   "preferGlobal": "true",
-  "main": "./lib/doclet/index.js",
+  "main": "./lib/nodoc/index.js",
   "bin": {
-    "doclet": "./bin/index.js"
+    "nodoc": "./bin/index.js"
   },
   "scripts": {
     "test": "jasmine-node --color spec"
